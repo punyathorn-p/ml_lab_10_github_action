@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
@@ -8,25 +8,29 @@ from sklearn.metrics import accuracy_score
 import mlflow
 import mlflow.sklearn
 from mlflow.artifacts import download_artifacts
-from mlflow.models.signature import infer_signature
+
+# ล้างค่า environment variable เก่า
+for var in ["MLFLOW_TRACKING_URI", "MLFLOW_ARTIFACT_URI"]:
+    if var in os.environ:
+        del os.environ[var]
+
+# ตั้งค่า MLflow ให้เก็บ artifact ภายใน project
+mlruns_dir = os.path.abspath("mlruns")
+mlflow.set_tracking_uri(f"file://{mlruns_dir}")
+print(f"MLflow tracking URI set to: file://{mlruns_dir}")
+
+mlflow.set_experiment("Breast Cancer - Model Training")
 
 def train_evaluate_register(preprocessing_run_id, C=1.0):
     ACCURACY_THRESHOLD = 0.95
-
-    # กำหนด MLflow tracking URI ภายใน project
-    mlruns_dir = os.path.abspath("mlruns")
-    mlflow.set_tracking_uri(f"file://{mlruns_dir}")
-    print(f"MLflow tracking URI set to: file://{mlruns_dir}")
-
-    # ตั้ง experiment (เวอร์ชันเก่าไม่รองรับ artifact_location)
-    mlflow.set_experiment("Breast Cancer - Model Training")
 
     with mlflow.start_run(run_name=f"logistic_regression_C_{C}"):
         print(f"Starting training run with C={C}...")
         mlflow.set_tag("ml.step", "model_training_evaluation")
         mlflow.log_param("preprocessing_run_id", preprocessing_run_id)
+        mlflow.log_param("C", C)
 
-        # 1. Load preprocessed data from artifacts
+        # โหลด artifact จาก preprocessing
         try:
             local_artifact_path = download_artifacts(
                 run_id=preprocessing_run_id,
@@ -34,11 +38,8 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
             )
             print(f"Artifacts downloaded to: {local_artifact_path}")
 
-            train_path = os.path.join(local_artifact_path, "train.csv")
-            test_path = os.path.join(local_artifact_path, "test.csv")
-
-            train_df = pd.read_csv(train_path)
-            test_df = pd.read_csv(test_path)
+            train_df = pd.read_csv(os.path.join(local_artifact_path, "train.csv"))
+            test_df = pd.read_csv(os.path.join(local_artifact_path, "test.csv"))
             print("Successfully loaded data from downloaded artifacts.")
         except Exception as e:
             print(f"Error loading artifacts: {e}")
@@ -49,49 +50,37 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
         X_test = test_df.drop('target', axis=1)
         y_test = test_df['target']
 
-        # 2. Create pipeline
+        # สร้าง pipeline
         pipeline = Pipeline([
             ('scaler', StandardScaler()),
             ('model', LogisticRegression(C=C, random_state=42, max_iter=10000))
         ])
         pipeline.fit(X_train, y_train)
 
-        # 3. Evaluate model
+        # ประเมินผล
         y_pred = pipeline.predict(X_test)
         acc = accuracy_score(y_test, y_pred)
         print(f"Accuracy: {acc:.4f}")
-
-        # 4. Log parameters, metrics, and model
-        mlflow.log_param("C", C)
         mlflow.log_metric("accuracy", acc)
 
-        signature = infer_signature(X_train, pipeline.predict(X_train))
-        input_example = X_train.iloc[:5]
+        # log model แบบใช้ name แทน artifact_path
+        mlflow.sklearn.log_model(pipeline, artifact_path=None, registered_model_name="breast-cancer-classifier-prod", name="cancer_classifier_pipeline")
 
-        mlflow.sklearn.log_model(
-            sk_model=pipeline,
-            artifact_path="cancer_classifier_pipeline",
-            signature=signature,
-            input_example=input_example
-        )
-        print("Model logged successfully.")
-
-        # 5. Register model if accuracy meets threshold
+        # ตรวจสอบ threshold
         if acc >= ACCURACY_THRESHOLD:
-            print(f"Model accuracy ({acc:.4f}) meets the threshold. Registering model...")
-            model_uri = f"runs:/{mlflow.active_run().info.run_id}/cancer_classifier_pipeline"
-            registered_model = mlflow.register_model(model_uri, "breast-cancer-classifier-prod")
-            print(f"Model registered as '{registered_model.name}' version {registered_model.version}")
+            print(f"Model accuracy ({acc:.4f}) meets threshold, registered automatically.")
         else:
-            print(f"Model accuracy ({acc:.4f}) is below the threshold. Not registering.")
-
+            print(f"Accuracy below threshold ({acc:.4f}), not registering.")
         print("Training run finished.")
 
+
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python scripts/03_train_evaluate_register.py <preprocessing_run_id> [C_value]")
+    if not os.path.exists("preprocessing_run_id.txt"):
+        print("Error: preprocessing_run_id.txt not found!")
         sys.exit(1)
 
-    run_id = sys.argv[1]
-    c_value = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0
+    with open("preprocessing_run_id.txt") as f:
+        run_id = f.read().strip()
+
+    c_value = float(sys.argv[1]) if len(sys.argv) > 1 else 1.0
     train_evaluate_register(preprocessing_run_id=run_id, C=c_value)
