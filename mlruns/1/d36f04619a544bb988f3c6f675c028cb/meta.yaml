@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/1/d36f04619a544bb988f3c6f675c028cb/artifacts
+end_time: 1757909252444
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: d36f04619a544bb988f3c6f675c028cb
+run_name: sneaky-ant-778
+run_uuid: d36f04619a544bb988f3c6f675c028cb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757909252425
+status: 4
+tags: []
+user_id: computer

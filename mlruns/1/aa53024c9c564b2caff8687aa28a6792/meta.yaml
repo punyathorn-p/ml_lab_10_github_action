@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/1/aa53024c9c564b2caff8687aa28a6792/artifacts
+end_time: 1757909948639
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: aa53024c9c564b2caff8687aa28a6792
+run_name: wise-hen-893
+run_uuid: aa53024c9c564b2caff8687aa28a6792
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757909948597
+status: 3
+tags: []
+user_id: computer

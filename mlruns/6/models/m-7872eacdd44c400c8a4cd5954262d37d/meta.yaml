@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/computer/Downloads/lab9/mlruns/6/models/m-7872eacdd44c400c8a4cd5954262d37d/artifacts
+creation_timestamp: 1757910716560
+experiment_id: '6'
+last_updated_timestamp: 1757910720122
+model_id: m-7872eacdd44c400c8a4cd5954262d37d
+model_type: null
+name: breast_cancer_classifier_pipeline
+source_run_id: 2bb7ef10488c421e869bf458d8935b07
+status: 2
+status_message: null

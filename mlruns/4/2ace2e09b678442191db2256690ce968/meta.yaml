@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/4/2ace2e09b678442191db2256690ce968/artifacts
+end_time: 1757910403873
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+run_id: 2ace2e09b678442191db2256690ce968
+run_name: adorable-stoat-685
+run_uuid: 2ace2e09b678442191db2256690ce968
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757910403830
+status: 3
+tags: []
+user_id: computer

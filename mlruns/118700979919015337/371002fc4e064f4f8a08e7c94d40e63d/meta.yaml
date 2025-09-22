@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/118700979919015337/371002fc4e064f4f8a08e7c94d40e63d/artifacts
+end_time: 1757911338566
+entry_point_name: ''
+experiment_id: '118700979919015337'
+lifecycle_stage: active
+run_id: 371002fc4e064f4f8a08e7c94d40e63d
+run_name: orderly-newt-397
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757911338482
+status: 3
+tags: []
+user_id: computer

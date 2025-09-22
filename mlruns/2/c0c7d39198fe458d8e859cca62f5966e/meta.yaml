@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/2/c0c7d39198fe458d8e859cca62f5966e/artifacts
+end_time: 1757909633182
+entry_point_name: ''
+experiment_id: '2'
+lifecycle_stage: active
+run_id: c0c7d39198fe458d8e859cca62f5966e
+run_name: charming-bird-397
+run_uuid: c0c7d39198fe458d8e859cca62f5966e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757909633132
+status: 3
+tags: []
+user_id: computer

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/5/688bac01d742461ca167f769ff3bec5f/artifacts
+end_time: 1757910694883
+entry_point_name: ''
+experiment_id: '5'
+lifecycle_stage: active
+run_id: 688bac01d742461ca167f769ff3bec5f
+run_name: angry-frog-996
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757910694786
+status: 3
+tags: []
+user_id: computer

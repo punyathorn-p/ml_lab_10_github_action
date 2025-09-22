@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/4/01fa3b5751a340ee8c2d3cd97926464e/artifacts
+end_time: 1757910681768
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+run_id: 01fa3b5751a340ee8c2d3cd97926464e
+run_name: chill-shad-254
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757910681682
+status: 3
+tags: []
+user_id: computer

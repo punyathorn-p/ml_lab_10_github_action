@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/computer/Downloads/lab9/mlruns/683986435687005498/models/m-9decd06638d14e89bc2849c588dc9a86/artifacts
+creation_timestamp: 1757911379933
+experiment_id: '683986435687005498'
+last_updated_timestamp: 1757911383190
+model_id: m-9decd06638d14e89bc2849c588dc9a86
+model_type: null
+name: cancer_classifier_pipeline
+source_run_id: 1ec4fa26bb1b4433a9e3a7e35cf9ba4e
+status: 2
+status_message: null

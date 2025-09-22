@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/1/cf44bb55667649b88a1df0a7ed04a77e/artifacts
+end_time: 1757908939235
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: cf44bb55667649b88a1df0a7ed04a77e
+run_name: bold-moose-838
+run_uuid: cf44bb55667649b88a1df0a7ed04a77e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757908939215
+status: 4
+tags: []
+user_id: computer

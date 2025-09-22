@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/4/fc0526e377fc4514bf6e2e02b7e1179c/artifacts
+end_time: 1757911060128
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+run_id: fc0526e377fc4514bf6e2e02b7e1179c
+run_name: dapper-shoat-438
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757911060042
+status: 3
+tags: []
+user_id: computer

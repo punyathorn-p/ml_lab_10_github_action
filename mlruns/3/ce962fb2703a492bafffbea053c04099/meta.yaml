@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/3/ce962fb2703a492bafffbea053c04099/artifacts
+end_time: 1757909979212
+entry_point_name: ''
+experiment_id: '3'
+lifecycle_stage: active
+run_id: ce962fb2703a492bafffbea053c04099
+run_name: logistic_regression_C_15.0
+run_uuid: ce962fb2703a492bafffbea053c04099
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757909979190
+status: 4
+tags: []
+user_id: computer

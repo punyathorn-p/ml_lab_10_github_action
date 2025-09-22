@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/1/81a29c49db2543d8bbfe16a415909bbd/artifacts
+end_time: 1757908748831
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 81a29c49db2543d8bbfe16a415909bbd
+run_name: bustling-eel-990
+run_uuid: 81a29c49db2543d8bbfe16a415909bbd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757908748812
+status: 4
+tags: []
+user_id: computer

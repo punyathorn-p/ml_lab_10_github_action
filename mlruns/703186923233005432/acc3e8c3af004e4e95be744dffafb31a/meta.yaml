@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/703186923233005432/acc3e8c3af004e4e95be744dffafb31a/artifacts
+end_time: 1757911344524
+entry_point_name: ''
+experiment_id: '703186923233005432'
+lifecycle_stage: active
+run_id: acc3e8c3af004e4e95be744dffafb31a
+run_name: mysterious-midge-557
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757911344418
+status: 3
+tags: []
+user_id: computer

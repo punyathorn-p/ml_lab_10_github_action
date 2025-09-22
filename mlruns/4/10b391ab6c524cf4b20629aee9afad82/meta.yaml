@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/4/10b391ab6c524cf4b20629aee9afad82/artifacts
+end_time: 1757910872333
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+run_id: 10b391ab6c524cf4b20629aee9afad82
+run_name: able-bat-349
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757910872248
+status: 3
+tags: []
+user_id: computer

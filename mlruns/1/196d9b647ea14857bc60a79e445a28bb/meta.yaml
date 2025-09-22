@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/1/196d9b647ea14857bc60a79e445a28bb/artifacts
+end_time: 1757909934226
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+run_id: 196d9b647ea14857bc60a79e445a28bb
+run_name: vaunted-stork-444
+run_uuid: 196d9b647ea14857bc60a79e445a28bb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757909934191
+status: 3
+tags: []
+user_id: computer

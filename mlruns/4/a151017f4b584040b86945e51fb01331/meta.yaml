@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/computer/Downloads/lab9/mlruns/4/a151017f4b584040b86945e51fb01331/artifacts
+end_time: 1757910942864
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+run_id: a151017f4b584040b86945e51fb01331
+run_name: intelligent-gnat-463
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757910942768
+status: 3
+tags: []
+user_id: computer
