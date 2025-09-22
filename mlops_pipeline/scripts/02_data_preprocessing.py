@@ -6,17 +6,19 @@ from sklearn.model_selection import train_test_split
 import mlflow
 
 # -----------------------------
-# ล้าง cache MLflow เก่า
+# ล้างค่า environment เก่าของ MLflow
 # -----------------------------
-shutil.rmtree(os.path.expanduser("~/.mlflow"), ignore_errors=True)
 for var in ["MLFLOW_TRACKING_URI", "MLFLOW_ARTIFACT_URI"]:
     if var in os.environ:
         del os.environ[var]
 
+shutil.rmtree(os.path.expanduser("~/.mlflow"), ignore_errors=True)
+
 # -----------------------------
-# ตั้งค่า MLflow ให้ใช้ folder ภายใน project
+# ตั้งค่า MLflow ให้เก็บ artifact ภายใน project
 # -----------------------------
 mlruns_dir = os.path.abspath("mlruns")
+os.makedirs(mlruns_dir, exist_ok=True)
 mlflow.set_tracking_uri(f"file://{mlruns_dir}")
 print(f"MLflow tracking URI set to: file://{mlruns_dir}")
 
@@ -51,6 +53,7 @@ def preprocess_data(test_size=0.25, random_state=42):
         mlflow.log_metric("training_set_rows", len(X_train))
         mlflow.log_metric("test_set_rows", len(X_test))
 
+        # ใช้ artifact_path ภายใน project เท่านั้น
         mlflow.log_artifacts(processed_data_dir, artifact_path="processed_data")
         print("Logged processed data as artifacts in MLflow.")
 
