@@ -1,14 +1,14 @@
 from sklearn.datasets import load_breast_cancer
 import mlflow
 
-
 def load_and_predict():
     """
     Simulates a production scenario by loading a model from a specific
     stage in the MLflow Model Registry and using it for prediction.
     """
+    # Set model name and stage here
     MODEL_NAME = "breast-cancer-classifier-prod"
-    MODEL_STAGE = "Staging"  # Change to "Production" after transitioning the model stage
+    MODEL_STAGE = "Staging"  # สามารถเปลี่ยนเป็น "Production" ได้เมื่อพร้อม
 
     print(f"Loading model '{MODEL_NAME}' from stage '{MODEL_STAGE}'...")
 
@@ -34,7 +34,6 @@ def load_and_predict():
     print(f"Actual Label: {actual_label}")
     print(f"Predicted Label: {prediction[0]}")
     print("-" * 30)
-
 
 if __name__ == "__main__":
     load_and_predict()
