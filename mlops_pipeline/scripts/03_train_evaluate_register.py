@@ -13,13 +13,13 @@ from mlflow.models.signature import infer_signature
 def train_evaluate_register(preprocessing_run_id, C=1.0):
     ACCURACY_THRESHOLD = 0.95
 
-    # กำหนด MLflow experiment และ artifact location ภายใน project
+    # กำหนด MLflow tracking URI ภายใน project
     mlruns_dir = os.path.abspath("mlruns")
-    exp = mlflow.set_experiment(
-        experiment_name="Breast Cancer - Model Training",
-        artifact_location=f"file://{mlruns_dir}"
-    )
-    print(f"MLflow experiment artifact location: {exp.artifact_location}")
+    mlflow.set_tracking_uri(f"file://{mlruns_dir}")
+    print(f"MLflow tracking URI set to: file://{mlruns_dir}")
+
+    # ตั้ง experiment (เวอร์ชันเก่าไม่รองรับ artifact_location)
+    mlflow.set_experiment("Breast Cancer - Model Training")
 
     with mlflow.start_run(run_name=f"logistic_regression_C_{C}"):
         print(f"Starting training run with C={C}...")
@@ -61,7 +61,7 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
         acc = accuracy_score(y_test, y_pred)
         print(f"Accuracy: {acc:.4f}")
 
-        # 4. Log parameters, metrics, and model with signature and input_example
+        # 4. Log parameters, metrics, and model
         mlflow.log_param("C", C)
         mlflow.log_metric("accuracy", acc)
 
