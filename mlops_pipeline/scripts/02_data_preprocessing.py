@@ -2,18 +2,23 @@ import os
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
+
+# -----------------------------
+# ล้างค่า environment variable เก่าของ MLflow
+# -----------------------------
+for var in ["MLFLOW_TRACKING_URI", "MLFLOW_ARTIFACT_URI"]:
+    if var in os.environ:
+        del os.environ[var]
+
 import mlflow
 
 # -----------------------------
-# ตั้งค่า MLflow artifact store ให้ใช้ folder ภายใน project
+# ตั้งค่า MLflow ให้ใช้ folder ภายใน project
 # -----------------------------
-mlruns_dir = os.path.abspath("mlruns")  # จะเป็น /home/runner/... หรือ Windows path ก็ได้
+mlruns_dir = os.path.abspath("mlruns")
 mlflow.set_tracking_uri(f"file://{mlruns_dir}")
 print(f"MLflow tracking URI set to: file://{mlruns_dir}")
 
-# -----------------------------
-# เริ่ม experiment
-# -----------------------------
 mlflow.set_experiment("Breast Cancer - Data Preprocessing")
 
 def preprocess_data(test_size=0.25, random_state=42):
@@ -32,7 +37,7 @@ def preprocess_data(test_size=0.25, random_state=42):
             X, y, test_size=test_size, random_state=random_state, stratify=y
         )
 
-        # สร้าง folder สำหรับ processed data
+        # Create processed_data folder
         processed_data_dir = os.path.abspath("processed_data")
         os.makedirs(processed_data_dir, exist_ok=True)
 
